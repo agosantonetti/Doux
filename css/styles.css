@@ -1,0 +1,1205 @@
+/* ==========================================================================
+   DOUX · Landing Día de la Madre
+   ========================================================================== */
+
+/* VARIABLES DE DISEÑO (tomadas del Figma) */
+:root {
+    --crema: #FAF4F1;          /* fondo general */
+    --marron: #352829;         /* fondo de secciones oscuras */
+    --marron-texto: #513939;   /* títulos y textos sobre claro */
+    --rosa: #E6CACA;           /* fondo del bloque de productos */
+    --rosa-boton: #A26666;     /* botones (un tono más oscuro que el Figma: texto blanco pasa contraste AA 4.5:1) */
+    --rosa-boton-hover: #8C5454;
+    --claro: #F5F5F5;          /* textos sobre marrón */
+    --blanco: #FFFFFF;
+
+    --fuente: 'Josefin Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+    --ancho-max: 1280px;
+    --margen: 64px;            /* margen lateral del contenido */
+    --alto-header: 68px;
+    --alto-onda: 72px;         /* alto del borde superior (superficie del chocolate) */
+    --alto-chorreado: 104px;   /* alto del borde inferior con gotas */
+
+    /* formas de los bordes (generadas como SVG) */
+    --mascara-superficie: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100' preserveAspectRatio='none'%3E%3Cpath d='M0,100L0,77.2C6,77 24,76.4 36,75.8C48,75.2 60,74.1 72,73.7C84,73.2 96,74.9 108,73.4C120,71.9 132,67.5 144,64.7C156,61.9 168,57.4 180,56.6C192,55.8 204,59 216,60.1C228,61.2 240,62.9 252,63.3C264,63.7 276,61.7 288,62.5C300,63.2 312,66.2 324,67.5C336,68.9 348,71.3 360,70.7C372,70.1 384,65.6 396,64.2C408,62.7 420,61.4 432,61.8C444,62.3 456,65.9 468,66.6C480,67.3 492,66.3 504,66.2C516,66.1 528,65.1 540,65.8C552,66.6 564,70.6 576,70.7C588,70.9 600,69.6 612,66.8C624,64 636,57.3 648,53.9C660,50.6 672,48.9 684,46.8C696,44.6 708,43.6 720,41C732,38.4 744,33.2 756,31.3C768,29.5 780,29.5 792,30.1C804,30.7 816,34.8 828,35.1C840,35.4 852,33.2 864,32C876,30.8 888,28 900,27.7C912,27.5 924,30 936,30.3C948,30.6 960,29.8 972,29.4C984,29 996,26.6 1008,28.1C1020,29.5 1032,34.7 1044,38.2C1056,41.7 1068,47 1080,49.3C1092,51.6 1104,50.7 1116,51.8C1128,52.9 1140,54.5 1152,55.8C1164,57.1 1176,60 1188,59.5C1200,59.1 1212,55 1224,53.2C1236,51.4 1248,48.5 1260,48.6C1272,48.7 1284,52.5 1296,53.6C1308,54.7 1320,55.2 1332,55.3C1344,55.4 1356,53.5 1368,54.2C1380,54.9 1392,58.3 1404,59.3C1416,60.4 1434,60.3 1440,60.5L1440,100Z'/%3E%3C/svg%3E");
+    --mascara-chorreado: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 140' preserveAspectRatio='none'%3E%3Cpath d='M0,0L0,45.7C6.7,46.6 26.6,51.1 40,51.3C53.4,51.5 73.8,47.5 80.6,46.8C94.9,46.8 101,49.8 102,63.1C103,66.2 104.4,71 104.4,79.2C104.4,97.3 131.6,97.3 131.6,79.2C131.6,71 133,66.2 134,63.1C135,49.8 141.1,46.8 155.4,43.7C162.1,43.5 182.1,43 195.4,42.2C208.7,41.3 222.1,40.2 235.4,38.4C248.7,36.7 262.1,33.5 275.4,31.5C288.7,29.5 307,27.2 315.4,26.4C323.8,25.7 323.9,26.8 325.6,26.9C335.7,26.9 340,29 340.7,38.4C341.4,33.1 342.4,31.5 342.4,37.3C342.4,50 361.6,50 361.6,37.3C361.6,31.5 362.6,33.1 363.3,38.4C364,29 368.3,26.9 378.4,29.2C385.1,29.6 405.1,31.3 418.4,31.5C431.7,31.6 446.5,30.4 458.4,30.2C470.3,29.9 484.4,29.9 489.6,29.8C508.1,29.8 516,33.8 517.3,50.9C518.6,68.5 520.4,83.7 520.4,94.2C520.4,117.6 555.6,117.6 555.6,94.2C555.6,83.7 557.4,68.5 558.7,50.9C560,33.8 567.9,29.8 586.4,30.6C593.1,29.9 613.1,28 626.4,26.3C639.7,24.6 653.1,21.8 666.4,20.6C679.7,19.5 695.9,18.8 706.4,19.5C716.9,20.1 725.4,23.6 729.2,24.5C741,24.5 746,27 746.8,37.9C747.7,37 748.8,38.6 748.8,45.3C748.8,60.2 771.2,60.2 771.2,45.3C771.2,38.6 772.3,37 773.2,37.9C774,27 779,24.5 790.8,26.8C797.5,27.1 817.5,27.5 830.8,28.4C844.1,29.4 857.5,30.5 870.8,32.5C884.1,34.5 897.5,38 910.8,40.4C924.1,42.8 940.9,46 950.8,47C960.7,47.9 967,46.2 970.2,46C986.2,46 993,49.4 994.1,64.3C995.3,72.9 996.8,81.7 996.8,90.8C996.8,111 1027.2,111 1027.2,90.8C1027.2,81.7 1028.7,72.9 1029.9,64.3C1031,49.4 1037.8,46 1053.8,43.2C1060.5,43.2 1080.5,43.3 1093.8,43.2C1107.1,43.1 1120.8,43.9 1133.8,42.8C1146.8,41.6 1165.5,37.4 1171.8,36.3C1181,36.3 1185,38.3 1185.7,46.9C1186.3,40.6 1187.2,38.2 1187.2,43.5C1187.2,55.2 1204.8,55.2 1204.8,43.5C1204.8,38.2 1205.7,40.6 1206.3,46.9C1207,38.3 1211,36.3 1220.2,34.6C1226.9,34.8 1246.9,35.1 1260.2,36.1C1273.5,37.1 1290.8,39.7 1300.2,40.5C1309.6,41.4 1314,41.1 1316.8,41.2C1330.2,41.2 1336,44.1 1337,56.6C1337.9,58.8 1339.2,62.8 1339.2,70.4C1339.2,87.5 1364.8,87.5 1364.8,70.4C1364.8,62.8 1366.1,58.8 1367,56.6C1368,44.1 1373.8,41.2 1387.2,38.3C1393.9,38 1418.4,36.5 1427.2,36.1C1436,35.7 1437.9,36 1440,35.9L1440,0Z'/%3E%3C/svg%3E");
+    --radio: 16px;
+    --ease-entrada: cubic-bezier(0.2, 0.7, 0.2, 1); /* arranca rápido y frena suave */
+}
+
+/* RESET */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    -webkit-tap-highlight-color: transparent; /* sin el destello gris del navegador al tocar: cada elemento tiene su propio estado de toque */
+    scroll-behavior: smooth;
+    scroll-padding-top: var(--alto-header); /* que la nav fija no tape los títulos */
+    overflow-x: clip;                       /* clip (no hidden) para no romper position: sticky */
+}
+
+body {
+    background-color: var(--crema);
+    color: var(--marron-texto);
+    font-family: var(--fuente);
+    font-size: 1rem;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* con el menú mobile abierto se bloquea el scroll en <html> (no en <body>:
+   eso convertiría al body en otro contenedor de scroll y la navbar sticky
+   quedaría "pegada" arriba de todo, en el hero) */
+html.menu-abierto {
+    overflow: hidden;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* CONTENEDOR */
+.contenedor {
+    width: 100%;
+    max-width: var(--ancho-max);
+    margin-inline: auto;
+    padding-inline: var(--margen);
+}
+
+/* ==========================================================================
+   COMPONENTES
+   ========================================================================== */
+
+/* TIPOGRAFÍA */
+.overline {
+    display: block;
+    font-size: 1.0625rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    margin-bottom: 12px;
+}
+
+.titulo-seccion {
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 1.1;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    text-wrap: balance; /* si el título corta en dos líneas, que queden parejas */
+    margin-bottom: 24px;
+}
+
+.titulo-seccion--centrado {
+    text-align: center;
+}
+
+/* BOTÓN (píldora) */
+.boton {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 24px 9px; /* Josefin Sans asienta bajo: más padding arriba compensa el centrado óptico */
+    border-radius: 100px;
+    background-color: var(--rosa-boton);
+    color: var(--blanco);
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: 0.02em;
+    transition: background-color 0.25s ease, transform 0.25s ease;
+}
+
+.boton .bi {
+    font-size: 1.1em;
+    transition: transform 0.25s ease;
+}
+
+/* SECCIONES */
+.seccion {
+    position: relative;
+}
+
+.seccion--marron {
+    --color-onda: var(--marron);
+    background-color: var(--marron);
+    color: var(--claro);
+}
+
+/* ONDAS: bordes de chocolate derretido.
+   Se dibujan con una máscara SVG y toman el color de su sección (--color-onda),
+   así el mismo recurso sirve para marrón y rosa.
+   - arriba: la superficie irregular del chocolate
+   - abajo: el chocolate chorreando, con gotas de distinto largo */
+.onda {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    background-color: var(--color-onda);
+    pointer-events: none;
+    -webkit-mask-size: 100% 100%;
+            mask-size: 100% 100%;
+    -webkit-mask-repeat: no-repeat;
+            mask-repeat: no-repeat;
+}
+
+.onda--arriba {
+    top: 1px;
+    height: var(--alto-onda);
+    transform: translateY(-100%);
+    -webkit-mask-image: var(--mascara-superficie);
+            mask-image: var(--mascara-superficie);
+}
+
+.onda--abajo {
+    bottom: 1px;
+    height: var(--alto-chorreado);
+    transform: translateY(100%);
+    -webkit-mask-image: var(--mascara-chorreado);
+            mask-image: var(--mascara-chorreado);
+}
+
+/* espejadas, para que ningún borde se repita igual que el anterior */
+.bloque-rosa > .onda--arriba { transform: translateY(-100%) scaleX(-1); }
+.nosotros > .onda--abajo     { transform: translateY(100%) scaleX(-1); }
+
+/* DOS COLUMNAS: texto + imagen (Homenaje y Nosotros) */
+.dos-columnas {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 64px;
+}
+
+.dos-columnas__texto {
+    max-width: 560px;
+}
+
+.dos-columnas__texto p {
+    margin-bottom: 32px;
+}
+
+/* ==========================================================================
+   HEADER / NAVBAR
+   ========================================================================== */
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    height: var(--alto-header);
+    background-color: rgba(250, 244, 241, 0.9);
+    -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(81, 57, 57, 0.12);
+    transition: box-shadow 0.3s ease;
+}
+
+.header.con-scroll {
+    box-shadow: 0 2px 12px rgba(53, 40, 41, 0.08);
+}
+
+.header__contenido {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo__img {
+    height: 36px;
+    width: auto;
+}
+
+.nav {
+    display: flex;
+    gap: 40px;
+}
+
+.nav__link {
+    position: relative;
+    font-size: 1rem;
+    padding-block: 8px;
+}
+
+/* subrayado que crece al hacer hover */
+.nav__link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 4px;
+    width: 100%;
+    height: 1px;
+    background-color: currentColor;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease-out;
+}
+
+.hamburguesa {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--marron-texto);
+    font-size: 1.75rem;
+    cursor: pointer;
+    padding: 4px;
+    transition: transform 0.15s ease;
+}
+
+.hamburguesa__cerrar {
+    display: none;
+}
+
+/* ==========================================================================
+   HERO
+   ========================================================================== */
+.hero {
+    position: relative;
+    z-index: 2; /* las cajas quedan por encima de la onda marrón */
+    display: flex;
+    /* ocupa toda la primera pantalla: de la onda marrón solo se asoma el borde */
+    min-height: calc(100svh - var(--alto-header) - 24px);
+}
+
+.hero__grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1.15fr 1fr; /* las cajas se llevan más ancho: son las protagonistas */
+    align-items: end;                  /* el texto baja al extremo inferior derecho */
+    gap: 48px;
+}
+
+/* Composición de las dos cajas: cada una se ubica y rota por separado.
+   El alto del escenario sigue al alto de la ventana y las cajas se miden en %
+   de ese alto, así la composición escala entera sin desarmarse. */
+.hero__imagen {
+    position: relative;
+    height: min(calc(100svh - var(--alto-header) - 40px), 900px);
+    margin-bottom: -64px; /* las cajas "pisan" la onda */
+}
+
+.hero__caja {
+    position: absolute;
+    width: auto;
+    max-width: none;
+    filter: drop-shadow(10px 18px 16px rgba(53, 40, 41, 0.25));
+    transition: transform 0.6s ease;
+}
+
+/* la clara: atrás (más chica por perspectiva), más arriba y a la derecha */
+.hero__caja--atras {
+    height: 78%;
+    bottom: 16%;
+    left: 50%;
+    transform: rotate(9deg);
+}
+
+/* la oscura: adelante (más grande), apoyada más abajo y a la izquierda */
+.hero__caja--adelante {
+    height: 82%;
+    bottom: 7%;
+    left: 20%;
+    transform: rotate(-12deg);
+    z-index: 1;
+}
+
+.hero__texto {
+    padding-bottom: 120px; /* el botón queda arriba de la onda */
+}
+
+.hero__titulo {
+    font-size: 3.25rem;
+    font-weight: 600;
+    line-height: 1;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.hero__bajada {
+    font-size: 1.125rem;
+    font-weight: 300;
+    line-height: 1.5;
+    max-width: 420px;
+    margin-bottom: 28px;
+}
+
+/* ==========================================================================
+   UN HOMENAJE A SU DULZURA
+   ========================================================================== */
+.homenaje {
+    display: flex;
+    align-items: center;
+    min-height: 560px;
+    padding-block: 120px 72px; /* arriba: deja lugar a las cajas del hero que bajan */
+    overflow-x: clip; /* corta la tableta en el borde derecho sin recortar las ondas (que salen en vertical) */
+}
+
+/* La tableta va "al corte": se apoya en el borde derecho de la pantalla
+   y una parte queda afuera (el html tiene overflow-x: clip). */
+.homenaje__imagen {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    width: min(38vw, 500px);
+    transform: translate(30%, -45%);
+    pointer-events: none;
+}
+
+.homenaje__imagen img {
+    width: 100%;
+}
+
+/* ==========================================================================
+   GALERÍA
+   ========================================================================== */
+.galeria {
+    padding-block: 168px 160px; /* arriba: deja lugar a las gotas de la sección marrón */
+}
+
+.galeria__titulo {
+    max-width: 760px;
+    margin: 0 auto 64px;
+    font-size: 1.875rem;
+    font-weight: 600;
+    line-height: 1.15;
+    text-align: center;
+    text-wrap: balance; /* evita que "artesanal" quede sola */
+}
+
+.galeria__fotos {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+}
+
+.polaroid {
+    flex: 0 1 30%;
+    background-color: var(--blanco);
+    padding: 16px 16px 64px;
+    box-shadow: 0 10px 30px rgba(53, 40, 41, 0.12);
+    transition: transform 0.4s ease;
+}
+
+.polaroid img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+}
+
+.polaroid:nth-child(1) { transform: rotate(-6deg) translateY(12px); }
+.polaroid:nth-child(2) { transform: rotate(5deg); }
+.polaroid:nth-child(3) { transform: rotate(-3deg) translateY(20px); }
+
+/* ==========================================================================
+   BLOQUE ROSA: productos + armá tu regalo
+   ========================================================================== */
+.bloque-rosa {
+    --color-onda: var(--rosa);
+    position: relative;
+    background-color: var(--rosa);
+}
+
+/* PRODUCTOS */
+.productos {
+    padding-block: 60px 0;
+}
+
+.productos__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-top: 48px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--crema);
+    border-radius: var(--radio);
+    overflow: hidden;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.03), 0 4px 8px rgba(0, 0, 0, 0.02);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card__img {
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+}
+
+.card__cuerpo {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 24px;
+}
+
+.card__titulo {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.card__texto {
+    font-size: 1rem;
+    color: rgba(81, 57, 57, 0.75);
+    margin-bottom: 24px;
+}
+
+.card__link {
+    margin-top: auto; /* alinea los links abajo aunque los textos midan distinto */
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.card__link .bi {
+    display: inline-block;
+    transition: transform 0.25s ease;
+}
+
+/* puntos del carrusel: solo se muestran en mobile */
+.productos__puntos {
+    display: none;
+    justify-content: center;
+    gap: 4px;
+}
+
+.punto {
+    width: 28px;                 /* área de toque más grande que el punto que se ve */
+    height: 28px;
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+}
+
+.punto::after {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 100px;
+    background-color: rgba(81, 57, 57, 0.25);
+    transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+/* el punto de la card que se está viendo se estira y se oscurece */
+.punto.activo::after {
+    width: 22px;
+    background-color: var(--marron-texto);
+}
+
+/* ARMÁ TU REGALO */
+.regalo {
+    padding-block: 120px 136px;
+}
+
+.regalo__grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    align-items: center; /* el título queda centrado respecto de los pasos, sin hueco abajo */
+    gap: 64px;
+}
+
+.regalo__intro p {
+    max-width: 420px;
+    margin-bottom: 32px;
+}
+
+.pasos {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.paso {
+    background-color: var(--crema);
+    border-radius: var(--radio);
+    padding: 24px 32px;
+}
+
+.paso__titulo {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.paso p {
+    font-size: 1rem;
+    color: rgba(81, 57, 57, 0.75);
+}
+
+.fecha-limite {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: fit-content;
+    margin: 64px auto 0;
+    padding: 16px 32px;
+    border-radius: 100px;
+    background-color: var(--marron-texto);
+    color: var(--claro);
+    font-size: 1.0625rem;
+    font-weight: 500;
+    text-align: center;
+}
+
+/* ==========================================================================
+   SOBRE NOSOTROS
+   ========================================================================== */
+.nosotros {
+    padding-block: 64px 48px;
+}
+
+/* MAPA CON PINES INTERACTIVOS
+   Los pines HTML se apoyan exactamente sobre los del PNG (--x / --y = punta
+   del pin, en % del mapa) y los tapan. Al pasar el mouse (o tocar, en celular)
+   la cabeza del pin se estira y se convierte en una pill con el barrio. */
+.mapa {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    margin-left: auto;
+}
+
+.mapa > img {
+    width: 100%;
+}
+
+.pin {
+    position: absolute;
+    left: var(--x);
+    top: var(--y);
+    width: 3.96%;            /* = ancho del pin dibujado (+6% para taparlo bien) */
+    aspect-ratio: 58 / 97;
+    translate: -50% -100%;   /* la punta del pin queda en (--x, --y) */
+    padding: 0;
+    border: none;
+    background: none;
+    color: var(--marron);
+    font: inherit;
+    cursor: pointer;
+}
+
+/* área de toque más grande que el pin, que es chiquito */
+.pin::before {
+    content: "";
+    position: absolute;
+    inset: -10px -12px;
+}
+
+/* pulso: un anillo que se expande desde la punta del pin, invitando a probarlo.
+   Se apaga cuando la persona interactúa con algún pin (.mapa.explorado, desde el JS) */
+.pin::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 220%;
+    aspect-ratio: 2.4 / 1;
+    border: 2px solid rgba(53, 40, 41, 0.55);
+    border-radius: 50%;
+    translate: -50% 50%;
+    opacity: 0;
+    animation: pulso-pin 2.6s ease-out infinite;
+    pointer-events: none;
+}
+
+/* escalonado, para que no latan todos a la vez */
+.pin:nth-of-type(3n + 1)::after { animation-delay: 0.9s; }
+.pin:nth-of-type(3n + 2)::after { animation-delay: 1.8s; }
+
+@keyframes pulso-pin {
+    0%   { transform: scale(0.3); opacity: 0.9; }
+    70%  { opacity: 0; }
+    100% { transform: scale(1.4); opacity: 0; }
+}
+
+.mapa.explorado .pin::after {
+    animation: none;
+    opacity: 0;
+}
+
+.pin__icono {
+    display: block;
+    width: 100%;
+    height: 100%;
+    fill: currentColor;
+}
+
+/* la pill nace del tamaño de la cabeza del pin y se estira */
+.pin__etiqueta {
+    position: absolute;
+    left: 50%;
+    top: 29.9%;              /* centro de la cabeza del pin */
+    display: flex;
+    align-items: center;
+    height: 28px;
+    padding: 0 7px;
+    border-radius: 100px;
+    background-color: var(--marron);
+    color: var(--claro);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+    white-space: nowrap;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.55);
+    transition: opacity 0.2s ease, transform 0.35s cubic-bezier(0.3, 1.4, 0.5, 1), padding 0.35s ease;
+    pointer-events: none;
+}
+
+.pin__texto {
+    display: block;
+    max-width: 0;
+    overflow: hidden;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    padding-top: 3px;        /* Josefin asienta bajo */
+    transition: max-width 0.4s ease;
+}
+
+/* estado abierto: con teclado (focus) o tocando en celular (.activo, desde el JS) */
+/* MINI INSTRUCTIVO debajo del mapa */
+.mapa__ayuda {
+    max-width: 400px;
+    margin: 20px 0 0 auto;
+    font-size: 0.875rem;
+    text-align: center;
+    color: rgba(245, 245, 245, 0.75);
+}
+
+.mapa__ayuda .bi {
+    margin-right: 6px;
+    color: var(--rosa);
+}
+
+/* por defecto se ve "Tocá…"; solo en la versión de escritorio con mouse se cambia por "Pasá el mouse…"
+   (la versión mobile es siempre táctil, aunque se vea en una compu con la ventana angosta) */
+.mapa__ayuda--mouse { display: none; }
+
+@media (hover: hover) and (pointer: fine) and (min-width: 769px) {
+    .mapa__ayuda--mouse  { display: inline; }
+    .mapa__ayuda--tactil { display: none; }
+}
+
+.pin:focus-visible,
+.pin.activo {
+    z-index: 3;
+    outline: none;
+}
+
+.pin:focus-visible .pin__etiqueta,
+.pin.activo .pin__etiqueta {
+    opacity: 1;
+    padding: 0 14px;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.pin:focus-visible .pin__texto,
+.pin.activo .pin__texto {
+    max-width: 160px;
+}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+.footer {
+    padding-top: calc(var(--alto-chorreado) + 64px); /* deja lugar al chorreado de Nosotros */
+}
+
+.footer__grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 48px;
+    padding-bottom: 64px;
+}
+
+.footer__logo {
+    width: 180px;
+    margin-bottom: 16px;
+}
+
+.footer__tagline {
+    display: block;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 24px;
+}
+
+.footer__redes {
+    display: flex;
+    gap: 16px;
+    font-size: 1.375rem;
+}
+
+.footer__redes a {
+    transition: color 0.25s ease;
+}
+
+.footer__columna {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.footer__titulo {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.footer__columna a {
+    font-size: 1rem;
+    color: rgba(81, 57, 57, 0.75);
+    transition: color 0.25s ease;
+}
+
+.footer__legal {
+    border-top: 1px solid rgba(81, 57, 57, 0.12);
+    padding-block: 24px 32px;
+    text-align: center;
+    font-size: 0.875rem;
+}
+
+/* ==========================================================================
+   MOBILE (hasta 768px)
+   ========================================================================== */
+/* Mobile: diseñado sobre las proporciones de un iPhone 13 (390 × 844 px).
+   Las alturas usan svh: el alto realmente visible en Safari, con las barras. */
+@media (max-width: 768px) {
+    :root {
+        --margen: 24px;          /* margen lateral estándar de iOS */
+        --alto-header: 56px;
+        --alto-onda: 40px;
+        --alto-chorreado: 56px;
+    }
+
+    /* NAVBAR: menú hamburguesa */
+    .logo__img {
+        height: 30px;
+    }
+
+    .hamburguesa {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 44px;             /* área de toque mínima recomendada por Apple */
+        height: 44px;
+        margin-right: -10px;     /* el ícono queda alineado al margen */
+    }
+
+    .hamburguesa[aria-expanded="true"] .hamburguesa__abrir { display: none; }
+    .hamburguesa[aria-expanded="true"] .hamburguesa__cerrar { display: inline-block; }
+
+    .nav {
+        position: absolute; /* colgado justo debajo de la navbar, esté donde esté */
+        top: 100%;
+        left: 0;
+        right: 0;
+        height: calc(100dvh - var(--alto-header));
+        flex-direction: column;
+        gap: 8px;
+        padding: 32px var(--margen);
+        background-color: var(--crema);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-8px);
+        transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+    }
+
+    .nav.abierto {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    .nav__link {
+        font-size: 1.5rem;
+        padding-block: 12px;
+        border-bottom: 1px solid rgba(81, 57, 57, 0.12);
+    }
+
+    .nav__link::after {
+        display: none;
+    }
+
+    /* TIPOGRAFÍA */
+    .overline {
+        font-size: 1.125rem;
+    }
+
+    .titulo-seccion {
+        font-size: 1.75rem;
+    }
+
+    .boton {
+        font-size: 1rem;
+        padding: 15px 24px 12px; /* 44px de alto: área de toque mínima de iOS */
+    }
+
+    /* HERO: imagen arriba, texto abajo */
+    /* el hero ocupa la primera pantalla: cajas arriba, texto abajo y la onda asomando */
+    .hero {
+        min-height: calc(100svh - var(--alto-header) - 16px);
+        padding-top: 16px;
+        overflow-x: clip; /* que las cajas inclinadas no generen scroll horizontal */
+    }
+
+    .hero__grid {
+        grid-template-columns: 1fr;
+        align-content: space-between;
+        gap: 16px;
+    }
+
+    .hero__imagen {
+        /* las cajas usan el alto que deja libre el texto (≈ 470px), entre 220 y 420px */
+        --alto-cajas: clamp(220px, calc(100svh - 470px), 420px);
+        height: var(--alto-cajas);
+        width: min(100%, calc(var(--alto-cajas) * 0.85));
+        margin: 0 auto;
+    }
+
+    /* composición un poco más cerrada que en desktop, para que entre en 390px */
+    .hero__caja--atras    { left: 44%; height: 76%; }
+    .hero__caja--adelante { left: 8%;  height: 80%; }
+
+    .hero__titulo {
+        font-size: 2.25rem;      /* "FELIZ DÍA MAMÁ" entra en una línea en 390px */
+    }
+
+    .hero__bajada {
+        font-size: 1.0625rem;
+    }
+
+    .hero__texto {
+        padding-bottom: 72px; /* que el botón no toque la onda */
+    }
+
+    /* DOS COLUMNAS → una */
+    .dos-columnas {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .homenaje {
+        display: block;
+        min-height: 0;
+        padding-block: 64px 0;
+    }
+
+    .homenaje__imagen {
+        position: static;
+        width: auto;
+        transform: none;
+    }
+
+    .homenaje__imagen img {
+        width: 85%;
+        margin-left: auto;
+        transform: translateX(22%); /* al corte también en mobile */
+    }
+
+    .nosotros {
+        padding-block: 64px;
+    }
+
+    .nosotros__mapa {
+        order: -1; /* en mobile el mapa va arriba del texto */
+    }
+
+    .mapa {
+        max-width: 320px;
+        margin: 0 auto;
+    }
+
+    .mapa__ayuda {
+        margin: 16px auto 0;
+    }
+
+    /* GALERÍA: polaroids escalonadas en diagonal */
+    .galeria {
+        padding-block: 96px 96px;
+    }
+
+    .galeria__titulo {
+        font-size: 1.5rem;
+        margin-bottom: 32px;
+    }
+
+    .galeria__fotos {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .polaroid {
+        width: 60%;
+        padding: 10px 10px 36px;
+    }
+
+    .polaroid:nth-child(2) {
+        align-self: flex-end;
+        margin-top: -56px;
+    }
+
+    .polaroid:nth-child(3) {
+        margin-top: -56px;
+        margin-left: 8%;
+    }
+
+    /* PRODUCTOS: carrusel que se desliza con el dedo; la siguiente card asoma
+       para que se entienda que hay más */
+    .productos {
+        padding-top: 40px;
+    }
+
+    .productos__grid {
+        display: flex;
+        gap: 16px;
+        margin: 28px calc(-1 * var(--margen)) 0;   /* el carrusel llega a los bordes de la pantalla */
+        padding: 8px var(--margen) 24px;           /* abajo: lugar para la sombra de las cards */
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scroll-padding-inline: var(--margen);
+        scrollbar-width: none;                     /* sin barra de scroll visible */
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .productos__grid::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* con mouse (compu con la ventana angosta) el carrusel se arrastra */
+    .productos__grid.arrastrable { cursor: grab; }
+    .productos__grid.arrastrando {
+        cursor: grabbing;
+        scroll-snap-type: none;      /* sin imán mientras se arrastra; se acomoda al soltar */
+        user-select: none;
+    }
+
+    .productos__grid img {
+        -webkit-user-drag: none;     /* que no se "agarre" la foto en lugar del carrusel */
+    }
+
+    .card {
+        flex: 0 0 78%;
+        scroll-snap-align: start;
+    }
+
+    .productos__puntos {
+        display: flex;
+    }
+
+    /* ARMÁ TU REGALO: el botón baja debajo de los pasos */
+    .regalo {
+        padding-block: 48px 96px;
+    }
+
+    .regalo__grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .regalo__intro {
+        display: contents; /* sus hijos pasan a ser parte de la grilla */
+    }
+
+    .regalo .titulo-seccion {
+        margin-bottom: -8px; /* el gap de la grilla ya separa: título y bajada quedan juntos */
+    }
+
+    .regalo__intro p {
+        margin-bottom: 0;
+    }
+
+    .pasos { order: 2; }
+
+    .regalo__boton {
+        order: 3;
+        justify-self: center;
+    }
+
+    .paso {
+        padding: 16px 20px;
+    }
+
+    .fecha-limite {
+        flex-direction: column; /* ícono arriba del texto */
+        gap: 8px;
+        margin-top: 32px;
+        border-radius: var(--radio);
+        font-size: 1.125rem;
+        padding: 16px 20px;
+    }
+
+    /* FOOTER: marca arriba, columnas lado a lado */
+    .footer {
+        padding-top: calc(var(--alto-chorreado) + 40px);
+    }
+
+    .footer__grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px 24px;
+        padding-bottom: 40px;
+    }
+
+    .footer__marca {
+        grid-column: 1 / -1;
+    }
+
+    .footer__logo {
+        width: 160px;
+    }
+}
+
+/* ==========================================================================
+   ANIMACIONES DE ENTRADA
+   Cada elemento con data-revelar arranca oculto y desplazado, y aparece cuando
+   entra en pantalla (el JS le agrega la clase .visible). --retraso escalona los
+   elementos de un mismo grupo.
+   Se usan las propiedades opacity y translate (no transform) para no pisar las
+   rotaciones de las cajas y polaroids ni los efectos de hover.
+   Solo se ocultan si hay JS (clase .js en <html>): sin JS todo se ve igual.
+   ========================================================================== */
+.js [data-revelar] {
+    opacity: 0;
+    transition:
+        opacity 0.9s var(--ease-entrada) var(--retraso, 0s),
+        translate 0.9s var(--ease-entrada) var(--retraso, 0s),
+        transform 0.4s ease,
+        box-shadow 0.3s ease,
+        background-color 0.25s ease;
+}
+
+.js [data-revelar="arriba"] { translate: 0 40px; }
+.js [data-revelar="izq"]    { translate: -56px 0; }
+.js [data-revelar="der"]    { translate: 56px 0; }
+
+.js [data-revelar].visible {
+    opacity: 1;
+    translate: 0 0;
+}
+
+/* en mobile todo entra desde abajo: los laterales podrían desbordar la pantalla */
+@media (max-width: 768px) {
+    .js [data-revelar="izq"],
+    .js [data-revelar="der"] { translate: 0 32px; }
+}
+
+/* si la persona pidió reducir el movimiento en su sistema, no se anima nada */
+@media (prefers-reduced-motion: reduce) {
+    .js [data-revelar] {
+        opacity: 1;
+        translate: none;
+        transition: none;
+    }
+
+    .pin::after {
+        animation: none;
+    }
+}
+
+/* ==========================================================================
+   HOVER: solo en la versión de escritorio y con mouse.
+   En celulares y tablets no hay "pasar por encima": al tocar, el hover
+   queda pegado hasta el próximo toque, así que ahí no se aplica.
+   ========================================================================== */
+@media (hover: hover) and (pointer: fine) and (min-width: 769px) {
+    .boton:hover {
+        background-color: var(--rosa-boton-hover);
+        transform: translateY(-2px);
+    }
+
+    .boton:hover .bi {
+        transform: translateX(4px);
+    }
+
+    .nav__link:hover::after {
+        transform: scaleX(1);
+    }
+
+    .hero__imagen:hover .hero__caja--atras    { transform: rotate(7deg) translateY(-8px); }
+    .hero__imagen:hover .hero__caja--adelante { transform: rotate(-10deg) translateY(-8px); }
+
+    .polaroid:hover {
+        transform: rotate(0deg) scale(1.04);
+    }
+
+    .card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 14px 28px rgba(53, 40, 41, 0.12);
+    }
+
+    .card__link:hover .bi {
+        transform: translateX(4px);
+    }
+
+    .footer__redes a:hover {
+        color: var(--rosa-boton);
+    }
+
+    .footer__columna a:hover {
+        color: var(--marron-texto);
+    }
+
+    .pin:hover {
+        z-index: 3;
+    }
+
+    .pin:hover .pin__etiqueta {
+        opacity: 1;
+        padding: 0 14px;
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    .pin:hover .pin__texto {
+        max-width: 160px;
+    }
+}
+
+/* ==========================================================================
+   TOQUE: en la versión mobile (y en cualquier pantalla táctil) la interacción
+   es al tocar, no hay hover.
+   Cada elemento tocable responde mientras el dedo está apoyado (:active).
+   ========================================================================== */
+@media (hover: none), (pointer: coarse), (max-width: 768px) {
+    .boton:active {
+        background-color: var(--rosa-boton-hover);
+        transform: scale(0.96);
+    }
+
+    .card:active {
+        transform: scale(0.98);
+    }
+
+    .card__link:active,
+    .nav__link:active,
+    .footer__columna a:active,
+    .footer__redes a:active {
+        color: var(--rosa-boton);
+    }
+
+    .hamburguesa:active {
+        transform: scale(0.9);
+    }
+
+    /* la polaroid tocada se endereza (equivalente al hover de escritorio) */
+    .polaroid.tocada {
+        transform: rotate(0deg) scale(1.04);
+        z-index: 1;
+    }
+}

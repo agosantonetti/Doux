@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doux | Feliz Día Mamá</title>
+    <meta name="description" content="Doux, chocolatería artesanal. Edición especial Día de la Madre.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- marca que hay JS: recién ahí se ocultan los elementos que entran animados -->
+    <script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+
+    <!-- Ícono de pin (se reutiliza en el mapa con <use>) -->
+    <svg width="0" height="0" style="position: absolute" aria-hidden="true">
+        <symbol id="icono-pin" viewBox="0 0 58 97">
+            <path fill-rule="evenodd" d="M29 0C13 0 0 13 0 29c0 5 1.4 9.3 3.6 13.4L29 97l25.4-54.6C56.6 38.3 58 34 58 29 58 13 45 0 29 0Zm0 18.5a10.5 10.5 0 1 1 0 21 10.5 10.5 0 0 1 0-21Z"/>
+        </symbol>
+    </svg>
+
+    <!-- ── NAVBAR (fija al scrollear) ─────────────────────────────────────── -->
+    <header class="header" id="header">
+        <div class="contenedor header__contenido">
+            <a href="#inicio" class="logo">
+                <img src="assets/img/logo-doux.png" alt="Doux" class="logo__img">
+            </a>
+
+            <nav class="nav" id="nav">
+                <a href="#homenaje" class="nav__link">Producto limitado</a>
+                <a href="#productos" class="nav__link">Más productos</a>
+                <a href="#nosotros" class="nav__link">Nosotros</a>
+                <a href="#contacto" class="nav__link">Contacto</a>
+            </nav>
+
+            <button class="hamburguesa" id="hamburguesa" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav">
+                <i class="bi bi-list hamburguesa__abrir" aria-hidden="true"></i>
+                <i class="bi bi-x-lg hamburguesa__cerrar" aria-hidden="true"></i>
+            </button>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- ── HERO ───────────────────────────────────────────────────────── -->
+        <section class="hero" id="inicio">
+            <div class="contenedor hero__grid">
+                <div class="hero__imagen">
+                    <img src="assets/img/hero-caja-2.png" class="hero__caja hero__caja--atras" data-revelar="arriba" style="--retraso: .25s" fetchpriority="high" alt="">
+                    <img src="assets/img/hero-caja-1.png" class="hero__caja hero__caja--adelante" data-revelar="arriba" style="--retraso: .1s" fetchpriority="high" alt="Dos cajas de la tableta Doux edición Día de la Madre">
+                </div>
+                <div class="hero__texto">
+                    <span class="overline" data-revelar="arriba" style="--retraso: .3s">Especial día de la madre</span>
+                    <h1 class="hero__titulo" data-revelar="arriba" style="--retraso: .4s">Feliz día mamá</h1>
+                    <p class="hero__bajada" data-revelar="arriba" style="--retraso: .5s">Nuestra creación exclusiva para celebrar el Mes de la Madre. Elaborada con cacao seleccionado, notas suaves de leche y almendras crocantes caramelizadas.</p>
+                    <a href="#homenaje" class="boton" data-revelar="arriba" style="--retraso: .6s">
+                        Ver más <i class="bi bi-arrow-right" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── UN HOMENAJE A SU DULZURA (marrón) ──────────────────────────── -->
+        <section class="seccion seccion--marron homenaje" id="homenaje">
+            <div class="onda onda--arriba" aria-hidden="true"></div>
+
+            <div class="contenedor dos-columnas">
+                <div class="dos-columnas__texto" data-revelar="izq">
+                    <h2 class="titulo-seccion">Un homenaje a su dulzura</h2>
+                    <p>Para este Día de la Madre, nuestros maestros chocolateros han creado una pieza única que rinde homenaje a la dulzura y sofisticación. Esta tableta de autor combina granos de cacao y suaves almendras seleccionados con delicadas notas aromáticas, envuelta en un empaque rígido con acabados sensibles y motivos botánicos diseñados exclusivamente para esta fecha.</p>
+                    <a href="#productos" class="boton">Ir a la tienda</a>
+                </div>
+                <div class="homenaje__imagen" data-revelar="der" style="--retraso: .15s">
+                    <img src="assets/img/tableta-almendras.png" loading="lazy" alt="Tableta Doux abierta con almendras">
+                </div>
+            </div>
+
+            <div class="onda onda--abajo" aria-hidden="true"></div>
+        </section>
+
+        <!-- ── GALERÍA (polaroids) ────────────────────────────────────────── -->
+        <section class="seccion galeria">
+            <div class="contenedor">
+                <h2 class="galeria__titulo" data-revelar="arriba">Donde la tradición del cacao encuentra la elegancia artesanal</h2>
+
+                <div class="galeria__fotos">
+                    <figure class="polaroid" data-revelar="arriba" style="--retraso: .1s">
+                        <img src="assets/img/galeria-1.png" loading="lazy" alt="Tableta Doux sobre un mantel de picnic con tulipanes">
+                    </figure>
+                    <figure class="polaroid" data-revelar="arriba" style="--retraso: .25s">
+                        <img src="assets/img/galeria-2.png" loading="lazy" alt="Mano sosteniendo la caja de la tableta Doux">
+                    </figure>
+                    <figure class="polaroid" data-revelar="arriba" style="--retraso: .4s">
+                        <img src="assets/img/galeria-3.png" loading="lazy" alt="Caja Doux junto a un ramo de flores rosas">
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── BLOQUE ROSA: productos + armá tu regalo ────────────────────── -->
+        <div class="bloque-rosa">
+            <div class="onda onda--arriba" aria-hidden="true"></div>
+
+            <!-- Descubrí más productos -->
+            <section class="seccion productos" id="productos">
+                <div class="contenedor">
+                    <h2 class="titulo-seccion titulo-seccion--centrado" data-revelar="arriba">Descubrí más productos</h2>
+
+                    <div class="productos__grid">
+                        <article class="card" data-revelar="arriba" style="--retraso: .1s">
+                            <img src="assets/img/trufas.png" loading="lazy" alt="Trufas y bombones de chocolate" class="card__img">
+                            <div class="card__cuerpo">
+                                <h3 class="card__titulo">Trufas y bombones</h3>
+                                <p class="card__texto">Cremosos por dentro, intensos y brillantes por fuera.</p>
+                                <a href="#" class="card__link">Ver producto <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+                            </div>
+                        </article>
+
+                        <article class="card" data-revelar="arriba" style="--retraso: .22s">
+                            <img src="assets/img/tabletas.png" loading="lazy" alt="Tabletas de chocolate con frutos secos" class="card__img">
+                            <div class="card__cuerpo">
+                                <h3 class="card__titulo">Tabletas</h3>
+                                <p class="card__texto">Con frutos secos, sal y caramelo, con leche, amargas y sin azúcar.</p>
+                                <a href="#" class="card__link">Ver producto <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+                            </div>
+                        </article>
+
+                        <article class="card" data-revelar="arriba" style="--retraso: .34s">
+                            <img src="assets/img/chocolate-en-rama.png" loading="lazy" alt="Chocolate en rama" class="card__img">
+                            <div class="card__cuerpo">
+                                <h3 class="card__titulo">Chocolate en rama</h3>
+                                <p class="card__texto">Ligero, finísimo. Puro placer en capas, ya sea blanco, negro o con leche.</p>
+                                <a href="#" class="card__link">Ver producto <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- puntos del carrusel: solo en mobile, donde las cards se deslizan -->
+                    <div class="productos__puntos" role="group" aria-label="Elegir producto">
+                        <button class="punto activo" aria-label="Trufas y bombones" aria-current="true"></button>
+                        <button class="punto" aria-label="Tabletas"></button>
+                        <button class="punto" aria-label="Chocolate en rama"></button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Armá tu regalo -->
+            <section class="seccion regalo" id="regalo">
+                <div class="contenedor regalo__grid">
+                    <div class="regalo__intro">
+                        <h2 class="titulo-seccion" data-revelar="izq">Armá tu regalo</h2>
+                        <p data-revelar="izq" style="--retraso: .1s">En tres simples pasos, sorprendé a mamá con un regalo hecho a mano, como ella.</p>
+                        <a href="#" class="boton regalo__boton" data-revelar="izq" style="--retraso: .2s">Armar mi regalo</a>
+                    </div>
+
+                    <ol class="pasos">
+                        <li class="paso" data-revelar="der" style="--retraso: .1s">
+                            <h3 class="paso__titulo">1. Elegí el regalo</h3>
+                            <p>Elegí entre nuestra edición especial Mamá Doux o cualquiera de nuestros clásicos de cacao seleccionado.</p>
+                        </li>
+                        <li class="paso" data-revelar="der" style="--retraso: .22s">
+                            <h3 class="paso__titulo">2. Sumá tu dedicatoria</h3>
+                            <p>Escribinos tu mensaje y lo pasamos a mano en una tarjeta ilustrada con nuestros motivos botánicos.</p>
+                        </li>
+                        <li class="paso" data-revelar="der" style="--retraso: .34s">
+                            <h3 class="paso__titulo">3. Envoltorio para regalo</h3>
+                            <p>Lo preparamos en nuestra caja rígida con moño y lo llevamos a donde nos digas, listo para entregar.</p>
+                        </li>
+                    </ol>
+                </div>
+
+                <div class="contenedor">
+                    <p class="fecha-limite" data-revelar="arriba">
+                        <i class="bi bi-calendar-heart" aria-hidden="true"></i>
+                        Pedí antes del jueves 15 de octubre y llega a tiempo para el domingo 18.
+                    </p>
+                </div>
+            </section>
+        </div>
+
+        <!-- ── SOBRE NOSOTROS (marrón) ────────────────────────────────────── -->
+        <section class="seccion seccion--marron nosotros" id="nosotros">
+            <div class="onda onda--arriba" aria-hidden="true"></div>
+
+            <div class="contenedor dos-columnas">
+                <div class="dos-columnas__texto" data-revelar="izq">
+                    <h2 class="titulo-seccion">Sobre nosotros</h2>
+                    <p>Con diez sucursales alrededor de toda la ciudad, Doux es una chocolatería artesanal que tiene como objetivo ofrecer productos de altísima calidad con una sensibilidad única e irrepetible.</p>
+                    <a href="#" class="boton">Ver ubicaciones</a>
+                </div>
+                <div class="nosotros__mapa" data-revelar="der" style="--retraso: .15s">
+                    <!-- Mapa con pines interactivos: cada pin se ubica con --x / --y
+                         (en % del mapa, apuntando a la punta del pin dibujado) -->
+                    <div class="mapa">
+                        <img src="assets/img/mapa.png" loading="lazy" alt="Mapa de la ciudad con las diez sucursales de Doux">
+                        <button class="pin" style="--x: 36.38%; --y: 9.59%" aria-label="Sucursal Núñez">
+                            <svg class="pin__icono" aria-hidden="true"><use href="#icono-pin"></use></svg>
+                            <span class="pin__etiqueta"><span class="pin__texto">Núñez</span></span>
+                        </button>
+                        <button class="pin" style="--x: 43.35%; --y: 14.35%" aria-label="Sucursal Belgrano">
+                            <svg class="pin__icono" aria-hidden="true"><use href="#icono-pin"></use></svg>
+                            <span class="pin__etiqueta"><span class="pin__texto">Belgrano</span></span>
+                        </button>
+                        <button class="pin" style="--x: 41.83%; --y: 25.27%" aria-label="Sucursal Colegiales">
+                            <svg class="pin__icono" aria-hidden="true"><use href="#icono-pin"></use></svg>
+                            <span class="pin__etiqueta"><span class="pin__texto">Colegiales</span></span>
+                        </button>
+                        <button class="pin" style="--x: 54.39%; --y: 26.41%" aria-label="Sucursal Palermo">
+                            <svg class="pin__icono" aria-hidden="true"><use href="#icono-pin"></use></svg>
+                            <span class="pin__etiqueta"><span class="pin__texto">Palermo</span></span>
+                        </button>
+                        <button class="pin" style="--x: 66.69%; --y: 33.84%" aria-label="Sucursal Recoleta">
+                            <svg class="pin__icono" aria-hidden="true"><use href="#icono-pin"></use></svg>
+                            <span class="pin__etiqueta"><span class="pin__texto">Recoleta</span></span>
+                        </button>
+                        <button class="pin" style="--x: 45.97%; --y: 38.67%" aria-label="Sucursal Villa Crespo">
+                            <svg class="pin__icono" aria-hidden="true"><use href="#icono-pin"></use></svg>
+                            <span class="pin__etiqueta"><span class="pin__texto">Villa Crespo</span></span>
+                        </button>
+                        <button class="pin" style="--x: 55.07%; --y: 45.02%" aria-label="Sucursal Almagro">
+                            <svg class="pin__icono" aria-hidden="true"><use href="#icono-pin"></use></svg>
+                            <span class="pin__etiqueta"><span class="pin__texto">Almagro</span></span>
+                        </button>
+                        <button class="pin" style="--x: 82.92%; --y: 45.97%" aria-label="Sucursal Puerto Madero">
+                            <svg class="pin__icono" aria-hidden="true"><use href="#icono-pin"></use></svg>
+                            <span class="pin__etiqueta"><span class="pin__texto">Puerto Madero</span></span>
+                        </button>
+                        <button class="pin" style="--x: 44.84%; --y: 50.22%" aria-label="Sucursal Caballito">
+                            <svg class="pin__icono" aria-hidden="true"><use href="#icono-pin"></use></svg>
+                            <span class="pin__etiqueta"><span class="pin__texto">Caballito</span></span>
+                        </button>
+                        <button class="pin" style="--x: 48.64%; --y: 59.68%" aria-label="Sucursal Boedo">
+                            <svg class="pin__icono" aria-hidden="true"><use href="#icono-pin"></use></svg>
+                            <span class="pin__etiqueta"><span class="pin__texto">Boedo</span></span>
+                        </button>
+                    </div>
+
+                    <!-- mini instructivo: el texto cambia según haya mouse o pantalla táctil -->
+                    <p class="mapa__ayuda">
+                        <span class="mapa__ayuda--mouse"><i class="bi bi-cursor" aria-hidden="true"></i> Pasá el mouse por los pines para ver cada sucursal</span>
+                        <span class="mapa__ayuda--tactil"><i class="bi bi-hand-index" aria-hidden="true"></i> Tocá un pin para ver el barrio de cada sucursal</span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="onda onda--abajo" aria-hidden="true"></div>
+        </section>
+
+    </main>
+
+    <!-- ── FOOTER ─────────────────────────────────────────────────────────── -->
+    <footer class="footer" id="contacto">
+        <div class="contenedor footer__grid">
+            <div class="footer__marca" data-revelar="arriba">
+                <img src="assets/img/logo-doux.png" alt="Doux" class="footer__logo">
+                <span class="footer__tagline">Chocolatería artesanal</span>
+                <div class="footer__redes">
+                    <a href="#" aria-label="Instagram"><i class="bi bi-instagram" aria-hidden="true"></i></a>
+                    <a href="#" aria-label="WhatsApp"><i class="bi bi-whatsapp" aria-hidden="true"></i></a>
+                </div>
+            </div>
+
+            <nav class="footer__columna" aria-label="Tienda" data-revelar="arriba" style="--retraso: .1s">
+                <h3 class="footer__titulo">Tienda</h3>
+                <a href="#homenaje">Producto limitado</a>
+                <a href="#productos">Más productos</a>
+                <a href="#regalo">Armá tu regalo</a>
+            </nav>
+
+            <nav class="footer__columna" aria-label="Doux" data-revelar="arriba" style="--retraso: .2s">
+                <h3 class="footer__titulo">Doux</h3>
+                <a href="#nosotros">Nosotros</a>
+                <a href="#nosotros">Sucursales</a>
+                <a href="#contacto">Contacto</a>
+            </nav>
+        </div>
+
+        <div class="contenedor footer__legal">
+            <p>© 2026 Doux · Todos los derechos reservados</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
